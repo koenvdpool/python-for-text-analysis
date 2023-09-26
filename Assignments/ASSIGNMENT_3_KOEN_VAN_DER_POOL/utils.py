@@ -7,7 +7,8 @@ def get_paths(input_folder: str, /):
     """
     A function to get a list of the pathnames of the text files stored in the given input folder.
     
-    :param input_folder: a string of the pathname of the input folder for which you want to store the file pathnames
+    :param input_folder: a string of the pathname of the input folder for which you want to store the 
+    file pathnames
     :return: a list of strings of the file pathnames
     """
     
