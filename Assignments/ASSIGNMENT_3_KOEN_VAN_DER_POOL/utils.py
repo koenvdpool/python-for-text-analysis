@@ -62,13 +62,13 @@ def get_basic_stats(txt_path, /):
     # initialize empty string
     token2freq = {}
 
-    # looping over the unique tokens
-    for token in vocab:
-        # count the occurrence of each token
-        token_count = tokens.count(token)
-        # add token with respective count to dictionary
-        token2freq[token] = token_count
-
+    # loop over the words to count them and add them to the dictionary
+    for token in tokens:
+        if token in token2freq:
+            token2freq[token] += 1
+        else:
+            token2freq[token] = 1
+            
     # initialize empty list
     top_30_tokens = []
 
