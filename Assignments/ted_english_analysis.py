@@ -178,12 +178,10 @@ if __name__ == "__main__":
     talks = utils.get_talks(root)
 
     n_talks = len(talks)
+    print(f'The total number of English Ted talks is: {n_talks}\n')
 
     titles_list_longest, ids_list_longest, wc_longest, mean_wc_longest = find_wc(talks, "longest")
     titles_list_shortest, ids_list_shortest, wc_shortest, mean_wc_shortest = find_wc(talks, "shortest")
-
-    print(f'The total number of English Ted talks is: {n_talks}\n')
-
     print(f'Talk length: longest talk - {wc_longest} words, shortest talk - {wc_shortest} words\n'
           f'Longest talk: {titles_list_longest} (id: {ids_list_longest})\n'
           f'Shortest talk: {titles_list_shortest} (id: {ids_list_shortest})\n'
