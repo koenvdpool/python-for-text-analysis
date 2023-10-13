@@ -177,9 +177,7 @@ if __name__ == "__main__":
     root = utils.load_root(path)
     talks = utils.get_talks(root)
 
-    n_talks = len(talks)
-    print(f'The total number of English Ted talks is: {n_talks}\n')
-
+    print("-------QUESTION 1-------")
     titles_list_longest, ids_list_longest, wc_longest, mean_wc_longest = find_wc(talks, "longest")
     titles_list_shortest, ids_list_shortest, wc_shortest, mean_wc_shortest = find_wc(talks, "shortest")
     print(f'Talk length: longest talk - {wc_longest} words, shortest talk - {wc_shortest} words\n'
@@ -187,11 +185,17 @@ if __name__ == "__main__":
           f'Shortest talk: {titles_list_shortest} (id: {ids_list_shortest})\n'
           f'Mean word count: {mean_wc_longest}\n')
 
+    print("-------QUESTION 2-------")
     titles_oldest, ids_oldest = find_date(talks, "oldest")
     titles_newest, ids_newest = find_date(talks, "newest")
     print(f'Talk date:\n'
           f'Oldest talk: {titles_oldest} (id: {ids_oldest})\n'
           f'Newest talk: {titles_newest} (id: {ids_newest})\n')
 
+    print("-------QUESTION 3-------")
     find_speaker_dict = find_speaker(talks)
-    print(f'The speakers with more than one talk are the following:\n{find_speaker_dict}')
+    print(f'The speakers with more than one talk are the following:\n{find_speaker_dict}\n')
+
+    print("-------QUESTION 4-------")
+    n_talks = len(talks)
+    print(f'The total number of English Ted talks is: {n_talks}\n')

@@ -193,3 +193,23 @@ def compare_dates(selected_date, current_date, /):
         result_comparison = "older"
 
     return result_comparison
+
+
+def get_title_id_tuples(selected_titles, id_to_title, /):
+    """
+    Extracts the talk IDs for selected talk titles from a provided dictionary.
+
+    :param selected_titles: the talk titles you are interested in
+    :param id_to_title: dict with a ID-to-title mapping
+    :return: a list of tuples containing talk titles and IDs
+    """
+    # Create empty list to store the title-ID tuples in
+    title_id_tuples = []
+
+    # Loop over all ID-to-title mapping
+    for talk_id, title in id_to_title.items():
+        # Add (title, talk_id) tuple if title is in list of selected titles
+        if title in selected_titles:
+            title_id_tuples.append((title, talk_id))
+
+    return title_id_tuples

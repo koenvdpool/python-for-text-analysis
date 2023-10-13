@@ -184,37 +184,40 @@ def find_top_coverage(dict_lang_to_path, n_translations, /):
 
 if __name__ == "__main__":
 
-    print("STEP 1 - Map languages to filepaths:")
+    # Map languages to filepaths
     xml_folder_path = "../Data/ted-talks/FILTERED_xml"
     dict_lang_to_xml_paths = map_languages_to_paths(xml_folder_path)
-    print(dict_lang_to_xml_paths)
-    print()
 
-    print("STEP 2 - most/least translations:")
+    # Languages with most/least translations
     lang_most_translations = find_coverage(dict_lang_to_xml_paths, "most")
     lang_least_translations = find_coverage(dict_lang_to_xml_paths, "least")
-    print(f'The dictionary with the language(s) with the most translations:\n{lang_most_translations}')
-    print(f'The dictionary with the language(s) with the least translations:\n{lang_least_translations}')
+
+    print("-------QUESTION 1-------")
+    print("Languages with the most/least translations and their respective translation count:")
+    print(f'MOST: {lang_most_translations}')
+    print(f'LEAST: {lang_least_translations}')
     print()
 
-    print("STEP 3 - Map talk ids to titles:")
-    path_en = '../Data/ted-talks/FILTERED_xml/ted_en.xml'
-    dict_en_id_to_title = get_id_title_dict(path_en)
-    print(dict_en_id_to_title)
-    print()
-
-    print("STEP 4 - Map talks to languages they have been translated into:")
-    dict_id_to_lang = map_talks_to_languages(dict_lang_to_xml_paths)
-    print(dict_id_to_lang)
-    print()
-
-    print("STEP 5 - Map number of languages to talk:")
-    dict_nlang_to_talks = map_nlang_to_talks(dict_id_to_lang)
-    print(dict_nlang_to_talks)
-    print()
-
-    print("STEP 6 - Put it all together:")
+    # Talks with most/least translations
     most_translated_talks = find_top_coverage(dict_lang_to_xml_paths, 'most')
     least_translated_talks = find_top_coverage(dict_lang_to_xml_paths, 'least')
-    print(f'The most translated talk(s) are/is:\n{most_translated_talks}')
-    print(f'The least translated talk(s) are/is:\n{least_translated_talks}')
+
+    # List of titles of most/least translated talks
+    titles_most_translated_talks = list(most_translated_talks.keys())
+    titles_least_translated_talks = list(least_translated_talks.keys())
+
+    # Getting the ID-to-title mapping
+    path_en = '../Data/ted-talks/FILTERED_xml/ted_en.xml'
+    dict_en_id_to_title = get_id_title_dict(path_en)
+
+    # Getting the IDs corresponding to the title
+    # Note: these will be stored in different order than in the dict
+    most_title_id_tuples = utils.get_title_id_tuples(titles_most_translated_talks, dict_en_id_to_title)
+    least_title_id_tuples = utils.get_title_id_tuples(titles_least_translated_talks, dict_en_id_to_title)
+
+    print("-------QUESTION 2-------")
+    print("The most/least translated talk(s) are/is:")
+    print(f'MOST: {most_translated_talks}\n'
+          f'Corresponding talk ID(s) (title, ID): {most_title_id_tuples}\n')
+    print(f'LEAST: {least_translated_talks}\n'
+          f'Corresponding talk ID(s) (title, ID): {least_title_id_tuples}')
