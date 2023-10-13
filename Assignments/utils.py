@@ -199,7 +199,7 @@ def get_title_id_tuples(selected_titles, id_to_title, /):
     """
     Extracts the talk IDs for selected talk titles from a provided dictionary.
 
-    :param selected_titles: the talk titles you are interested in
+    :param selected_titles: list of talk titles you are interested in
     :param id_to_title: dict with a ID-to-title mapping
     :return: a list of tuples containing talk titles and IDs
     """
